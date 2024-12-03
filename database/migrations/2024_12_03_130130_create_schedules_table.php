@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('dow');
             $table->string('level');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
