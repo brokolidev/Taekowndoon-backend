@@ -13,10 +13,21 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('belt_color', [
+                'white', 'yellow',
+                'green', 'blue',
+                'brown', 'red',
+                'mixed', 'black',
+            ])->default('white')->nullable();
+            $table->string('sns_id')->nullable();
+            $table->enum('role', [
+                'admin', 'instructor', 'student'
+            ])->default('student');
             $table->rememberToken();
             $table->timestamps();
         });
