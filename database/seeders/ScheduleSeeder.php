@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Schedule;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -113,5 +114,24 @@ class ScheduleSeeder extends Seeder
             'dow' => 5,
             'level' => 'Beginner Class 1'
         ]);
+
+
+        $schedules = Schedule::all();
+        foreach ($schedules as $schedule) {
+            $instructorIds = User::where('role', 'instructor')
+                ->inRandomOrder()
+                ->take(rand(1, 3))
+                ->pluck('id')
+                ->toArray();
+
+            $studentIds = User::where('role', 'student')
+                ->inRandomOrder()
+                ->take(rand(100, 200))
+                ->pluck('id')
+                ->toArray();
+            $schedule->students = $studentIds;
+            $schedule->instructors = $instructorIds;
+            $schedule->save();
+        }
     }
 }
