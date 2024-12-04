@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ScheduleController;
 use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,3 +27,5 @@ Route::post('/login', function (LoginRequest $request) {
     return ['token' => $token];
 });
 
+
+Route::get('/schedule', [ScheduleController::class, 'index']);

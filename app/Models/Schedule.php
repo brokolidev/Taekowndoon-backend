@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Schedule extends Model
@@ -12,6 +13,11 @@ class Schedule extends Model
     use HasFactory, SoftDeletes;
 
     protected $casts = [
-        'students' => 'array'
+        'students' => 'array',
+        'instructors' => 'array'
     ];
+
+    public function timeslot(): HasOne {
+        return $this->hasOne(TimeSlot::class);
+    }
 }
