@@ -10,4 +10,8 @@ class Schedule extends Model
 {
     /** @use HasFactory<\Database\Factories\ScheduleFactory> */
     use HasFactory, SoftDeletes;
+
+    protected $casts = [
+        'students' => 'array'
+    ];
 }

@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,11 +12,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // create 10 students
-        User::factory(10)->create();
+        // create 300 students
+        User::factory(300)->create();
 
         // create 5 instructors
-        User::factory(10)->create([
+        User::factory(5)->create([
             'role' => 'instructor'
         ]);
 
@@ -29,5 +28,10 @@ class DatabaseSeeder extends Seeder
             'belt_color' => 'black',
             'role' => 'admin',
         ]);
+
+        $this->call([
+            TimeslotSeeder::class,
+        ]);
+
     }
 }

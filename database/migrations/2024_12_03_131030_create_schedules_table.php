@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id')
-                ->references('id')
-                ->on('users');
             $table->foreignId('timeslot_id')
                 ->references('id')
                 ->on('timeslots');
-            $table->string('student_ids')->nullable();
+            $table->json('instructors')->nullable();
+            $table->json('students')->nullable();
             $table->integer('dow');
             $table->string('level');
             $table->timestamps();

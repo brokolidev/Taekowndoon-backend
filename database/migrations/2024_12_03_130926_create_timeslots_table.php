@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('timeslots', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('starts_at')->nullable();
-            $table->timestamp('ends_at')->nullable();
+            $table->time('starts_at')->nullable();
+            $table->time('ends_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
