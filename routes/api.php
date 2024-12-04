@@ -5,8 +5,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
-    return $request->user();
+// need to be authenticated
+Route::middleware(['auth:sanctum'])->group(function() {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::post('/logout', function (Request $request) {
+        $request->user()->tokens()->delete();
+    });
 });
 
 Route::post('/login', function (LoginRequest $request) {
@@ -18,3 +25,4 @@ Route::post('/login', function (LoginRequest $request) {
 
     return ['token' => $token];
 });
+
