@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('profile_img')->default('https://i.pravatar.cc/300')->nullable();
             $table->enum('belt_color', [
                 'white', 'yellow',
                 'green', 'blue',
