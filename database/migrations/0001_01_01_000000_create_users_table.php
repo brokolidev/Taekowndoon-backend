@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->date('dob')->nullable();
             $table->string('password');
             $table->string('profile_img')->default('https://i.pravatar.cc/300')->nullable();
             $table->enum('belt_color', [
@@ -27,7 +28,7 @@ return new class extends Migration
             ])->default('white')->nullable();
             $table->string('sns_id')->nullable();
             $table->enum('role', [
-                'admin', 'instructor', 'student'
+                'admin', 'instructor', 'student',
             ])->default('student');
             $table->rememberToken();
             $table->timestamps();
