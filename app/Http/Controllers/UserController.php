@@ -12,6 +12,8 @@ class UserController extends Controller
     {
         return new UserCollection(User::where('role', 'student')
             ->take(100)
-            ->get());
+            ->paginate()
+            ->withPath('/students')
+        );
     }
 }
