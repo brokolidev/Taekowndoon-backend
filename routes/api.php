@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // need to be authenticated
-Route::middleware(['auth:sanctum'])->group(function() {
+Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
@@ -28,6 +28,6 @@ Route::post('/login', function (LoginRequest $request) {
     return ['token' => $token];
 });
 
-
 Route::get('/schedule', [ScheduleController::class, 'index']);
 Route::get('/students', [UserController::class, 'getStudents']);
+Route::post('/students', [UserController::class, 'storeStudent']);
