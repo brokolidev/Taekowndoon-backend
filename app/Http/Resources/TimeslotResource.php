@@ -15,8 +15,8 @@ class TimeslotResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'startsAt' => $this->starts_at,
-            'endsAt' => $this->ends_at,
+            'startsAt' => $this->startsAt,
+            'endsAt' => $this->endsAt,
         ];
     }
 }

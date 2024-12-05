@@ -12,4 +12,14 @@ class Timeslot extends Model
     use HasFactory, SoftDeletes;
 
     protected $hidden = ['id', 'deleted_at', 'created_at', 'updated_at'];
+
+    protected function getStartsAtAttribute($value): string
+    {
+        return date('H:i', strtotime($value));
+    }
+
+    protected function getEndsAtAttribute($value): string
+    {
+        return date('H:i', strtotime($value));
+    }
 }

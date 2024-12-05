@@ -21,6 +21,7 @@ class ScheduleResource extends JsonResource
             'classSize' => count($this->students),
             'mainInstructor' => $this->mainInstructor,
             'dow' => date('l', strtotime("Sunday +{$this->dow} days")),
+            'levelImgUrl' => 'https://picsum.photos/24',
         ];
     }
 }
