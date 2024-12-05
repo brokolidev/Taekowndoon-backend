@@ -29,5 +29,9 @@ Route::post('/login', function (LoginRequest $request) {
 });
 
 Route::get('/schedule', [ScheduleController::class, 'index']);
+
+// students
 Route::get('/students', [UserController::class, 'getStudents']);
 Route::post('/students', [UserController::class, 'storeStudent']);
+Route::get('/students/{id}', [UserController::class, 'getStudent']);
+

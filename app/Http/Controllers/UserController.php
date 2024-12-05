@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\UserCollection;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -48,5 +49,10 @@ class UserController extends Controller
         Auth::login($user);
 
         return response()->noContent();
+    }
+
+    public function getStudent(string $id): UserResource
+    {
+        return new UserResource(User::findOrFail($id));
     }
 }

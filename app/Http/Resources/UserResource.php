@@ -20,9 +20,12 @@ class UserResource extends JsonResource
             'firstName' => $this->first_name,
             'lastName' => $this->last_name,
             'fullName' => $this->fullName,
+            'email' => $this->email,
+            'dob' => $this->dob,
             'profileImgUrl' => $this->profile_img,
             'beltColor' => ucfirst($this->belt_color),
             'expiredAt' => date('F j, Y', strtotime("+{$randomDay} days")),
+            'createdAt' => date('F j, Y', strtotime($this->created_at)),
         ];
     }
 }
