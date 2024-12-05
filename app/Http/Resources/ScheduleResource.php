@@ -18,6 +18,9 @@ class ScheduleResource extends JsonResource
             'id' => $this->id,
             'level' => $this->level,
             'timeslot' => $this->timeslot,
+            'classSize' => count($this->students),
+            'mainInstructor' => $this->mainInstructor,
+            'dow' => date('l', strtotime("Sunday +{$this->dow} days")),
         ];
     }
 }

@@ -14,10 +14,16 @@ class Schedule extends Model
 
     protected $casts = [
         'students' => 'array',
-        'instructors' => 'array'
+        'instructors' => 'array',
     ];
 
-    public function timeslot(): HasOne {
-        return $this->hasOne(TimeSlot::class);
+    protected function timeslot(): HasOne
+    {
+        return $this->hasOne(Timeslot::class, 'id', 'timeslot_id');
+    }
+
+    public function getMainInstructorAttribute(): string
+    {
+        return User::find($this->instructors[0])->fullName;
     }
 }

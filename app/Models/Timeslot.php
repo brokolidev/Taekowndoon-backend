@@ -10,4 +10,6 @@ class Timeslot extends Model
 {
     /** @use HasFactory<\Database\Factories\TimeslotFactory> */
     use HasFactory, SoftDeletes;
+
+    protected $hidden = ['id', 'deleted_at', 'created_at', 'updated_at'];
 }
