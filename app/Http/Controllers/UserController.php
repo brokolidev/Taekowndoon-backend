@@ -16,6 +16,7 @@ class UserController extends Controller
     public function getStudents(): UserCollection
     {
         return new UserCollection(User::where('role', 'student')
+            ->orderBy('created_at', 'desc')
             ->paginate()
             ->withPath('/students')
         );
@@ -31,7 +32,7 @@ class UserController extends Controller
             'dob' => ['required', 'date'],
             'belt_color' => ['required', 'string'],
         ]);
-        
+
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
