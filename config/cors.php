@@ -19,7 +19,11 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => [env('FRONTEND_URL', 'http://localhost:3000')],
+    'allowed_origins' => [
+        env('FRONTEND_URL', 'http://localhost:3000'),
+        'https://*.brokolidev.com',
+        'https://tkdapp.brokolidev.com',
+    ],
 
     'allowed_origins_patterns' => [],
 
