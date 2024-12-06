@@ -19,15 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'verified' => \App\Http\Middleware\EnsureEmailIsVerified::class,
         ]);
-
-        $middleware->validateCsrfTokens(except: [
-            'https://tkdapp.brokolidev.com',
-            'https://tkd.brokolidev.com',
-            'http://localhost:3000',
-            'http://localhost:3001',
-        ]);
-
-        //
+        
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
